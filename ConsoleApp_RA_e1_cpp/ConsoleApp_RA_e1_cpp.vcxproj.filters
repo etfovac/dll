@@ -33,4 +33,14 @@
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Debug\CppNETWrapper.dll">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="..\Debug\CppNETWrapper.lib">
+      <Filter>Resource Files</Filter>
+    </Library>
+  </ItemGroup>
 </Project>

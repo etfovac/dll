@@ -3,7 +3,12 @@
 using namespace std;
 #pragma once
 #pragma unmanaged
-#define DllExport  __declspec( dllexport ) 
+#ifdef DLL_EXPORTS
+#define DllExport __declspec(dllexport)
+#else
+#define DllImport __declspec(dllimport)
+#endif
+
 /*#ifdef __cplusplus
 extern "C"
 {
@@ -21,7 +26,7 @@ struct connection_config {
 };
 typedef connection_config* conn_config;
 
-class DllExport RemoteAPI {
+class  RemoteAPI {
 private:
 	rmt_b rmt;
 public:

@@ -8,10 +8,11 @@ using namespace System;
 using namespace System::Runtime::InteropServices;
 using namespace ClientApp1;
 
-#ifdef __cplusplus
+
+/*#ifdef __cplusplus
 extern "C"
 {
-#endif
+#endif*/
 
 RemoteAPI::RemoteAPI(void)
 {	// constructor that creates a pointer to .net class and stores it in wrapper class
@@ -60,6 +61,6 @@ void RemoteAPI::Destroy()
 	ClientApp1::ClientBaseLib::ClientBase::Destroy(remote);
 };
 
-#ifdef __cplusplus
+/*#ifdef __cplusplus
 };
-#endif
+#endif*/
