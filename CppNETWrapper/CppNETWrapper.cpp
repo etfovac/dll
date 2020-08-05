@@ -6,6 +6,7 @@
 #pragma managed
 using namespace System;
 using namespace System::Runtime::InteropServices;
+using namespace System::Runtime::Serialization;
 using namespace ClientApp1;
 
 
@@ -16,14 +17,25 @@ extern "C"
 
 RemoteAPI::RemoteAPI(void)
 {	// constructor that creates a pointer to .net class and stores it in wrapper class
-	ClientApp1::ClientApp1Lib::ClientApp1 ^remote = gcnew  ClientApp1::ClientApp1Lib::ClientApp1();
-	IntPtr hptr = (IntPtr)GCHandle::Alloc(remote, GCHandleType::Normal); // class obj to handle, handle to pointer
+	// gnew triggers the browse
+	//ClientApp1::ClientApp1Lib::ClientApp1 ^remote = gcnew  ClientApp1::ClientApp1Lib::ClientApp1();
+	ClientApp1::ClientApp1Lib::ClientApp1 ^remote0; // empty/null ref
+	remote0->GetRef(remote0); // actual ref
+
+	//remote = (System::Runtime::Serialization::FormatterServices::GetUninitializedObject(remote0->GetType())); 	// returns null
+	//IntPtr hptr = (IntPtr)System::Runtime::Serialization::FormatterServices::GetUninitializedObject(remote->GetType()); 	// returns null
+	// works only with GetRef and that is redundant
+	//IntPtr hptr = (IntPtr)GCHandle::Alloc((System::Runtime::Serialization::FormatterServices::GetUninitializedObject(remote0->GetType())), GCHandleType::Normal); // class obj to handle, handle to pointer.
+	
+	// it works!
+	IntPtr hptr = (IntPtr)GCHandle::Alloc(remote0, GCHandleType::Normal); // class obj to handle, handle to pointer.
+
 	this->rmt = new rmt_api;
 	this->rmt->curr_instance = hptr.ToPointer();
 };
 
 RemoteAPI::~RemoteAPI(void)
-{ // deconstructor
+{ // destructor
 	GCHandle hndl = GCHandle::FromIntPtr((IntPtr)this->rmt->curr_instance);
 	hndl.Free();
 };
