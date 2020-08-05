@@ -1,5 +1,5 @@
-﻿extern alias RemoteAccessAPI;
-using RA = RemoteAccessAPI.RemoteAccessAPI.RemoteAccessAPILib;
+﻿using CBase = ClientApp1.ClientBaseLib.ClientBase;
+using CA1 = ClientApp1.ClientApp1Lib.ClientApp1;
 
 using System;
 using System.Collections.Generic;
@@ -14,16 +14,22 @@ namespace RemoteAccess_Test
     public class RemoteAccess
     {
         public
-        static RA.RemoteAccessBase RA_base = new RA.RemoteAccessBase();
-        static GCHandle handle = GCHandle.Alloc(RA_base, GCHandleType.Normal);
-        IntPtr hptr = (IntPtr)handle;
+        static CA1 CA1ref = new CA1();
+        static GCHandle handle = GCHandle.Alloc(CA1ref, GCHandleType.Normal);
+        readonly IntPtr hptr = (IntPtr)handle;
         
 
         public
-
-        RemoteAccess(RA.RemoteAccessBase RA_base)
+        RemoteAccess()
         {
-            RA.RemoteAccessBase.Create(RA_base, out RA_base);
+            GCHandle hndl = (GCHandle)hptr;
+            CA1 remote = (CA1)hndl.Target;
+            CA1.Create(remote, out remote);
         }
+        RemoteAccess(CA1 CA1ref)
+        {
+            CA1.Create(CA1ref, out _); // _ discard; check/test later if discard is applicable
+        }
+        
     }
 }

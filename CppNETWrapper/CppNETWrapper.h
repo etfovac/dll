@@ -4,10 +4,10 @@ using namespace std;
 #pragma once
 #pragma unmanaged
 #define DllExport  __declspec( dllexport ) 
-#ifdef __cplusplus
+/*#ifdef __cplusplus
 extern "C"
 {
-#endif
+#endif*/
 struct rmt_api {
 	void* curr_instance;
 	std::string last_error;
@@ -15,8 +15,9 @@ struct rmt_api {
 typedef rmt_api* rmt_b;
 
 struct connection_config {
-	unsigned short tcp_port;
+	string id;
 	string ip_address;
+	unsigned short tcp_port;
 };
 typedef connection_config* conn_config;
 
@@ -28,8 +29,8 @@ public:
 	virtual ~RemoteAPI(void);
 	void Create();
 	void  Destroy();
-	conn_config GetConnConfigFromINI();
+	conn_config GetConfig();
 };
-#ifdef __cplusplus
+/*#ifdef __cplusplus
 };
-#endif
+#endif*/
