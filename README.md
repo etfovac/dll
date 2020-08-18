@@ -1,5 +1,12 @@
 # dll [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/etfovac/dll/blob/master/LICENSE.md) [![GitHub (pre-)release](https://img.shields.io/badge/releases--yellow.svg)](https://github.com/etfovac/dll/releases)
 
+### C# Console  
+``` cs
+CA1 CA1_ref = FormatterServices.GetUninitializedObject(typeof(CA1)) as CA1;
+//CA1 CA1_ref = new CA1(); // 'new' triggers browsing to class file on disk
+CBase CB_ref = CA1_ref;
+CA1.Create(CA1_ref, out CA1_ref); 
+``` 
 ### C++ Wrapper
 CppNETWrapper.h - exports entire class and typedefs  
 ``` c++
@@ -50,6 +57,25 @@ this->rmt->curr_instance = hptr.ToPointer();
 };  
 ```
 ### C++ Wrapper Console Output
-<img src="./graphics/CppNETWrapperUsesGetRef.png" alt="CppNETWrapperUsesGetRef" width="900" height="512">  
+```c++
+#include "stdafx.h"
+#include <string>
+#include <iostream>
+#include "..\CppNETWrapper\CppNETWrapper.h"
+
+using namespace std;
+
+int main(){
+RemoteAPI RA;
+RA.Create();
+conn_config apiConnConfig = RA.GetConfig(); 
+//displays: App1 @ 192.168.0.123:4321
+cout << apiConnConfig->id << " @ " << apiConnConfig->ip_address << ":" << apiConnConfig->tcp_port <<endl;
+ RA.Destroy();
+RA.~RemoteAPI();
+return 0;
+}
+```
+<img src="./graphics/CppNETWrapperDLL_ConsoleOutput.png" alt="CppNETWrapperDLL_ConsoleOutput" width="900" height="512">  
 
 Note: For more on the constructor node issue in VS see <a href="https://github.com/etfovac/dll/issues/2#issue-673036198">'new' triggers browsing to lvclass file on disk</a>
