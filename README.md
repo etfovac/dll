@@ -62,7 +62,6 @@ this->rmt->curr_instance = hptr.ToPointer();
 #include <string>
 #include <iostream>
 #include "..\CppNETWrapper\CppNETWrapper.h"
-
 using namespace std;
 
 int main(){
