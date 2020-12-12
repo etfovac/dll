@@ -78,3 +78,6 @@ return 0;
 <img src="./graphics/CppNETWrapperDLL_ConsoleOutput.png" alt="CppNETWrapperDLL_ConsoleOutput" width="915" height="540">  
 
 Note: For more on the constructor node issue in VS see <a href="https://github.com/etfovac/dll/issues/2#issue-673036198">'new' triggers browsing to lvclass file on disk</a>
+
+### References  
+<a href=https://zone.ni.com/reference/en-XX/help/371361M-01/lvhowto/charac_net_interop/>Characteristics of LabVIEW-Built .NET Interop Assemblies</a>
