@@ -1,4 +1,5 @@
-# Wrapped the .NET assembly (LabVIEW classes) into C++ DLL [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/etfovac/dll/blob/master/LICENSE.md) [![GitHub (pre-)release](https://img.shields.io/badge/releases--yellow.svg)](https://github.com/etfovac/dll/releases)
+# Wrapped the .NET assembly (LabVIEW classes) into C++ DLL  
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/etfovac/dll/blob/master/LICENSE.md) [![DOI](https://zenodo.org/badge/285043029.svg)](https://zenodo.org/badge/latestdoi/285043029) [![GitHub (pre-)release](https://img.shields.io/badge/releases--yellow.svg)](https://github.com/etfovac/dll/releases)
 
 ### C# Console  
 ``` cs
