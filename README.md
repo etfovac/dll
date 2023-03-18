@@ -81,4 +81,4 @@ return 0;
 Note: For more on the constructor node issue in VS see <a href="https://github.com/etfovac/dll/issues/2#issue-673036198">'new' triggers browsing to lvclass file on disk</a>
 
 ### References  
-<a href=https://www.ni.com/docs/en-US/bundle/labview/page/lvhowto/charac_net_interop.html>Characteristics of LabVIEW-Built .NET Interop Assemblies</a>
+<a href="https://www.ni.com/docs/en-US/bundle/labview/page/lvhowto/charac_net_interop.html">Characteristics of LabVIEW-Built .NET Interop Assemblies</a>
